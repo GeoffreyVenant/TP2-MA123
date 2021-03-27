@@ -1,0 +1,59 @@
+# -*- coding: utf-8 -*-
+"""
+TP2_MA123 Geoffrey VENANT
+"""
+import math as m
+
+def g0(x):
+    return (1+m.sin(x))/2
+
+def g1(x):
+    return 1*(9-3*x)**(1/4)
+
+def g12(x):
+    return -1*(9-3*x)**(1/4)
+
+def g2(x):
+    return (m.acos(x)+2)/3
+
+def g3(x):
+    return m.log(7/x)
+
+def g41(x):
+    return m.exp(x)-10
+
+def g42(x):
+    return m.log(10+x)
+
+def g5(x):
+    return m.atan((x+5)/2)
+
+def g6(x):
+    return m.log((x**2)+3)
+
+def g7(x):
+    return (7-4*m.log(x))/3
+
+def g8(x):
+    return (2*x**2-4*x+17)**(1/4)
+
+def g9(x):
+    return m.log(7+2*m.sin(x))
+
+def g10(x):
+    return m.log(10/m.log(x**2+4))
+
+
+def Point_Fixe(g,x0,epsilon,Nitermax):
+    n=0
+    xold = x0
+    erreur = g(xold) - xold
+    while abs(erreur)>epsilon and n<Nitermax:
+        xnew = g(xold)
+        erreur = xnew - xold
+        xold = xnew
+        print(n)
+        n+=1
+    return xnew 
+    
+print(Point_Fixe(g12,2,1e-10,5e4))
